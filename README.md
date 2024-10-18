@@ -59,7 +59,7 @@ module.exports = {
 };
 ```
 
-#Write and Deploy contract
+# Write and Deploy contract
 1. Create Contract: Under "contracts/", create a file "Lock.sol":
 
 ```shell
