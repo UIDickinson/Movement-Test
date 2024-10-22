@@ -1,13 +1,19 @@
+
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 import {Script} from "forge-std/Script.sol";
 import {Counter} from "../src/Counter.sol";
-contract CounterScript is Script {
+import "forge-std/console.sol";
+contract InteractScript is Script {
     Counter public counter;
     uint256 public deployerPrivateKey = vm.envUint("PRIVATE_KEY");
     function run() public {
         vm.startBroadcast(deployerPrivateKey);
-        counter = new Counter();
+        counter = Counter(0x044Bee70fb34a660003414562ABfB2adc89841E9);
+        counter.setNumber(1);
+        console.log("Number is now: ", counter.number());
+        counter.increment();
+        console.log("Number was incremented to: ", counter.number());
         vm.stopBroadcast();
     }
 }
